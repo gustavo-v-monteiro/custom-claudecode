@@ -13,7 +13,7 @@ It also supports **alternative AI providers** as drop-in replacements for the An
 ## Quick Start
 
 ```bash
-npx @realmikekelly/claude-sneakpeek quick --name claudesp
+npx github:gustavo-v-monteiro/custom-claudecode quick --name claudesp
 ```
 
 Add `~/.local/bin` to your PATH if it isn't already (macOS/Linux):
@@ -27,7 +27,7 @@ Then run `claudesp` to launch.
 For the full interactive setup wizard:
 
 ```bash
-npx @realmikekelly/claude-sneakpeek
+npx github:gustavo-v-monteiro/custom-claudecode
 ```
 
 ## What gets unlocked?
@@ -59,17 +59,17 @@ Each provider can be selected during setup. Mirror is the default and uses your 
 
 ```bash
 # Install
-npx @realmikekelly/claude-sneakpeek quick --name <name>       # Fast setup
-npx @realmikekelly/claude-sneakpeek create                     # Full wizard
-npx @realmikekelly/claude-sneakpeek                            # Interactive TUI
+npx github:gustavo-v-monteiro/custom-claudecode quick --name <name>       # Fast setup
+npx github:gustavo-v-monteiro/custom-claudecode create                     # Full wizard
+npx github:gustavo-v-monteiro/custom-claudecode                            # Interactive TUI
 
 # Manage
-npx @realmikekelly/claude-sneakpeek update <name>              # Update a variant
-npx @realmikekelly/claude-sneakpeek update                     # Update all variants
-npx @realmikekelly/claude-sneakpeek remove <name>              # Uninstall a variant
-npx @realmikekelly/claude-sneakpeek list                       # List all variants
-npx @realmikekelly/claude-sneakpeek doctor                     # Health check
-npx @realmikekelly/claude-sneakpeek tweak <name>               # Launch theme editor
+npx github:gustavo-v-monteiro/custom-claudecode update <name>              # Update a variant
+npx github:gustavo-v-monteiro/custom-claudecode update                     # Update all variants
+npx github:gustavo-v-monteiro/custom-claudecode remove <name>              # Uninstall a variant
+npx github:gustavo-v-monteiro/custom-claudecode list                       # List all variants
+npx github:gustavo-v-monteiro/custom-claudecode doctor                     # Health check
+npx github:gustavo-v-monteiro/custom-claudecode tweak <name>               # Launch theme editor
 ```
 
 ### Create options

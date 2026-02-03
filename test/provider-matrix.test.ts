@@ -52,8 +52,8 @@ test('Provider Feature Matrix', async (t) => {
     assert.ok(zai, 'zai provider should exist');
     assert.ok(minimax, 'minimax provider should exist');
 
-    assert.equal(zai.env.CC_MIRROR_SPLASH_STYLE, 'zai');
-    assert.equal(minimax.env.CC_MIRROR_SPLASH_STYLE, 'minimax');
+    assert.equal(zai.env.CLAUDE_SNEAKPEEK_SPLASH_STYLE, 'zai');
+    assert.equal(minimax.env.CLAUDE_SNEAKPEEK_SPLASH_STYLE, 'minimax');
   });
 
   await t.test('experimental providers are hidden by default', () => {
@@ -70,12 +70,21 @@ test('Provider Feature Matrix', async (t) => {
     assert.ok(!visibleKeys.includes('custom'), 'custom should not be in visible list');
   });
 
-  await t.test('all non-experimental providers have CC_MIRROR env settings', () => {
+  await t.test('all non-experimental providers have CLAUDE_SNEAKPEEK env settings', () => {
     const visible = listProviders(false);
     for (const provider of visible) {
-      assert.ok(provider.env.CC_MIRROR_SPLASH !== undefined, `${provider.key} should have CC_MIRROR_SPLASH`);
-      assert.ok(provider.env.CC_MIRROR_PROVIDER_LABEL, `${provider.key} should have CC_MIRROR_PROVIDER_LABEL`);
-      assert.ok(provider.env.CC_MIRROR_SPLASH_STYLE, `${provider.key} should have CC_MIRROR_SPLASH_STYLE`);
+      assert.ok(
+        provider.env.CLAUDE_SNEAKPEEK_SPLASH !== undefined,
+        `${provider.key} should have CLAUDE_SNEAKPEEK_SPLASH`
+      );
+      assert.ok(
+        provider.env.CLAUDE_SNEAKPEEK_PROVIDER_LABEL,
+        `${provider.key} should have CLAUDE_SNEAKPEEK_PROVIDER_LABEL`
+      );
+      assert.ok(
+        provider.env.CLAUDE_SNEAKPEEK_SPLASH_STYLE,
+        `${provider.key} should have CLAUDE_SNEAKPEEK_SPLASH_STYLE`
+      );
     }
   });
 

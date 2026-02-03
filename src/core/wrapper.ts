@@ -34,6 +34,11 @@ const C = {
   mirSecondary: '\x1b[38;5;250m', // Platinum
   mirAccent: '\x1b[38;5;45m', // Electric cyan
   mirDim: '\x1b[38;5;243m', // Muted silver
+  // Kimi: Prism Blue gradient
+  kimiPrimary: '\x1b[38;5;27m', // Royal Blue
+  kimiSecondary: '\x1b[38;5;33m', // Bright Blue
+  kimiAccent: '\x1b[38;5;45m', // Prism Cyan
+  kimiDim: '\x1b[38;5;24m', // Deep Blue
   // Default: White/Gray
   defPrimary: '\x1b[38;5;255m', // White
   defDim: '\x1b[38;5;245m', // Gray
@@ -111,6 +116,19 @@ const SPLASH_ART: SplashArt = {
     `${C.mirSecondary}      Claude ${C.mirDim}━${C.mirSecondary} Pure Reflection${C.reset}`,
     '',
   ],
+  kimi: [
+    '',
+    `${C.kimiPrimary}    ██╗  ██╗██╗███╗   ███╗██╗${C.reset}`,
+    `${C.kimiPrimary}    ██║ ██╔╝██║████╗ ████║██║${C.reset}`,
+    `${C.kimiSecondary}    █████╔╝ ██║██╔████╔██║██║${C.reset}`,
+    `${C.kimiSecondary}    ██╔═██╗ ██║██║╚██╔╝██║██║${C.reset}`,
+    `${C.kimiAccent}    ██║  ██╗██║██║ ╚═╝ ██║██║${C.reset}`,
+    `${C.kimiAccent}    ╚═╝  ╚═╝╚═╝╚═╝     ╚═╝╚═╝${C.reset}`,
+    '',
+    `${C.kimiDim}    ━━━━━━━━━━━━━${C.kimiAccent}◢◤${C.kimiDim}━━━━━━━━━━━━━${C.reset}`,
+    `${C.kimiSecondary}      Kimi K2.5 ${C.kimiDim}━${C.kimiSecondary} Prism Blue${C.reset}`,
+    '',
+  ],
   default: [
     '',
     `${C.defPrimary}    ██████╗ ██████╗   ${C.defDim}━━  M I R R O R${C.reset}`,
@@ -123,7 +141,7 @@ const SPLASH_ART: SplashArt = {
   ],
 };
 
-const KNOWN_SPLASH_STYLES = ['zai', 'minimax', 'openrouter', 'ccrouter', 'mirror'];
+const KNOWN_SPLASH_STYLES = ['zai', 'minimax', 'openrouter', 'ccrouter', 'mirror', 'kimi'];
 
 const buildWindowsWrapperScript = (opts: {
   configDir: string;
@@ -341,6 +359,12 @@ export const writeWrapper = (
     "        cat <<'CCMMIR'",
     ...SPLASH_ART.mirror,
     'CCMMIR',
+    '        __cc_show_label="0"',
+    '        ;;',
+    '      kimi)',
+    "        cat <<'CCMKIMI'",
+    ...SPLASH_ART.kimi,
+    'CCMKIMI',
     '        __cc_show_label="0"',
     '        ;;',
     '      *)',

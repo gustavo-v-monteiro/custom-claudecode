@@ -226,7 +226,7 @@ test('mirror brand preset writes tweakcc config and respects team mode support',
   const settings = JSON.parse(readFile(settingsPath)) as { env?: Record<string, unknown> };
   assert.ok(!settings.env?.ANTHROPIC_BASE_URL, 'mirror should not set ANTHROPIC_BASE_URL');
   assert.ok(!settings.env?.ANTHROPIC_API_KEY, 'mirror should not set ANTHROPIC_API_KEY');
-  assert.ok(settings.env?.CC_MIRROR_SPLASH, 'mirror should set splash env');
+  assert.ok(settings.env?.CLAUDE_SNEAKPEEK_SPLASH, 'mirror should set splash env');
 
   cleanup(rootDir);
   cleanup(binDir);

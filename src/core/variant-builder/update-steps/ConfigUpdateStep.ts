@@ -9,6 +9,7 @@ import {
   ensureOnboardingState,
   ensureSettingsEnvDefaults,
   ensureZaiMcpDeny,
+  migrateSettingsEnvKeys,
 } from '../../claude-config.js';
 import type { UpdateContext, UpdateStep } from '../types.js';
 
@@ -27,6 +28,9 @@ export class ConfigUpdateStep implements UpdateStep {
 
   private async updateConfig(ctx: UpdateContext, isAsync: boolean): Promise<void> {
     const { opts, meta, state } = ctx;
+
+    // Migrate legacy CC_MIRROR_* env vars to CLAUDE_SNEAKPEEK_*
+    migrateSettingsEnvKeys(meta.configDir);
 
     ensureApiKeyApproval(meta.configDir);
 

@@ -24,6 +24,10 @@ export const COMPLETION_HAIKUS: Record<string, HaikuLines[]> = {
     ['Local models shine,', "routed through the mirror's edge.", 'Your code, your design.'],
     ['Proxied through the night,', 'your models stand at the ready.', 'Code takes its first flight.'],
   ],
+  kimi: [
+    ['Prism breaks the light,', 'Kimi thinks in royal blue,', 'Code begins to flow.'],
+    ['Through the crystal lens,', 'Deepest space and bright insights,', 'Your variant lives.'],
+  ],
   default: [
     ['Mirror reflects true,', 'your variant is ready now.', 'Go build something new.'],
     ['Configuration done,', 'the wrapper awaits your call.', 'Your coding has begun.'],

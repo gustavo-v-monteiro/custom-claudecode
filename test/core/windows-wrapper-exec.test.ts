@@ -31,7 +31,7 @@ test('windows wrapper executes CLI', { skip: process.platform !== 'win32' }, () 
     const exec = spawnSync(wrapperPath, ['--version'], {
       encoding: 'utf8',
       shell: true,
-      env: { ...process.env, CC_MIRROR_SPLASH: '0' },
+      env: { ...process.env, CLAUDE_SNEAKPEEK_SPLASH: '0' },
     });
 
     assert.equal(exec.status, 0);

@@ -41,9 +41,9 @@ const PROVIDERS: Record<string, ProviderTemplate> = {
     baseUrl: '', // Empty = use Claude Code defaults (no ANTHROPIC_BASE_URL override)
     env: {
       // Only cosmetic settings - no auth or model overrides
-      CC_MIRROR_SPLASH: 1,
-      CC_MIRROR_PROVIDER_LABEL: 'Mirror Claude',
-      CC_MIRROR_SPLASH_STYLE: 'mirror',
+      CLAUDE_SNEAKPEEK_SPLASH: 1,
+      CLAUDE_SNEAKPEEK_PROVIDER_LABEL: 'Mirror Claude',
+      CLAUDE_SNEAKPEEK_SPLASH_STYLE: 'mirror',
     },
     apiKeyLabel: '', // Empty = skip API key prompt
     authMode: 'none', // No auth handling - user authenticates via normal Claude flow
@@ -60,9 +60,9 @@ const PROVIDERS: Record<string, ProviderTemplate> = {
       ANTHROPIC_DEFAULT_HAIKU_MODEL: 'glm-4.5-air',
       ANTHROPIC_DEFAULT_SONNET_MODEL: 'glm-4.7',
       ANTHROPIC_DEFAULT_OPUS_MODEL: 'glm-4.7',
-      CC_MIRROR_SPLASH: 1,
-      CC_MIRROR_PROVIDER_LABEL: 'Zai Cloud',
-      CC_MIRROR_SPLASH_STYLE: 'zai',
+      CLAUDE_SNEAKPEEK_SPLASH: 1,
+      CLAUDE_SNEAKPEEK_PROVIDER_LABEL: 'Zai Cloud',
+      CLAUDE_SNEAKPEEK_SPLASH_STYLE: 'zai',
     },
     apiKeyLabel: 'Zai API key',
   },
@@ -79,11 +79,27 @@ const PROVIDERS: Record<string, ProviderTemplate> = {
       ANTHROPIC_DEFAULT_SONNET_MODEL: 'MiniMax-M2.1',
       ANTHROPIC_DEFAULT_OPUS_MODEL: 'MiniMax-M2.1',
       ANTHROPIC_DEFAULT_HAIKU_MODEL: 'MiniMax-M2.1',
-      CC_MIRROR_SPLASH: 1,
-      CC_MIRROR_PROVIDER_LABEL: 'MiniMax Cloud',
-      CC_MIRROR_SPLASH_STYLE: 'minimax',
+      CLAUDE_SNEAKPEEK_SPLASH: 1,
+      CLAUDE_SNEAKPEEK_PROVIDER_LABEL: 'MiniMax Cloud',
+      CLAUDE_SNEAKPEEK_SPLASH_STYLE: 'minimax',
     },
     apiKeyLabel: 'MiniMax API key',
+  },
+  kimi: {
+    key: 'kimi',
+    label: 'Kimi AI',
+    description: 'Kimi K2.5 (Multimodal)',
+    baseUrl: 'https://api.kimi.com/coding',
+    env: {
+      API_TIMEOUT_MS: DEFAULT_TIMEOUT_MS,
+      ANTHROPIC_DEFAULT_SONNET_MODEL: 'kimi-k2.5',
+      ANTHROPIC_DEFAULT_HAIKU_MODEL: 'kimi-k2-turbo-preview',
+      ANTHROPIC_DEFAULT_OPUS_MODEL: 'kimi-k2-thinking',
+      CLAUDE_SNEAKPEEK_SPLASH: 1,
+      CLAUDE_SNEAKPEEK_PROVIDER_LABEL: 'Kimi AI',
+      CLAUDE_SNEAKPEEK_SPLASH_STYLE: 'kimi',
+    },
+    apiKeyLabel: 'Kimi API key',
   },
   openrouter: {
     key: 'openrouter',
@@ -92,9 +108,9 @@ const PROVIDERS: Record<string, ProviderTemplate> = {
     baseUrl: 'https://openrouter.ai/api',
     env: {
       API_TIMEOUT_MS: DEFAULT_TIMEOUT_MS,
-      CC_MIRROR_SPLASH: 1,
-      CC_MIRROR_PROVIDER_LABEL: 'OpenRouter',
-      CC_MIRROR_SPLASH_STYLE: 'openrouter',
+      CLAUDE_SNEAKPEEK_SPLASH: 1,
+      CLAUDE_SNEAKPEEK_PROVIDER_LABEL: 'OpenRouter',
+      CLAUDE_SNEAKPEEK_SPLASH_STYLE: 'openrouter',
     },
     apiKeyLabel: 'OpenRouter API key',
     authMode: 'authToken',
@@ -107,9 +123,9 @@ const PROVIDERS: Record<string, ProviderTemplate> = {
     baseUrl: 'http://127.0.0.1:3456',
     env: {
       API_TIMEOUT_MS: DEFAULT_TIMEOUT_MS,
-      CC_MIRROR_SPLASH: 1,
-      CC_MIRROR_PROVIDER_LABEL: 'Claude Code Router',
-      CC_MIRROR_SPLASH_STYLE: 'ccrouter',
+      CLAUDE_SNEAKPEEK_SPLASH: 1,
+      CLAUDE_SNEAKPEEK_PROVIDER_LABEL: 'Claude Code Router',
+      CLAUDE_SNEAKPEEK_SPLASH_STYLE: 'ccrouter',
     },
     apiKeyLabel: 'Router URL',
     authMode: 'authToken',
@@ -218,12 +234,12 @@ export const buildEnv = ({ providerKey, baseUrl, apiKey, extraEnv, modelOverride
     }
   } else if (apiKey) {
     env.ANTHROPIC_API_KEY = apiKey;
-    env.CC_MIRROR_UNSET_AUTH_TOKEN = '1';
+    env.CLAUDE_SNEAKPEEK_UNSET_AUTH_TOKEN = '1';
     if (providerKey === 'zai') {
       env.Z_AI_API_KEY = apiKey;
     }
   } else if (authMode === 'apiKey') {
-    env.CC_MIRROR_UNSET_AUTH_TOKEN = '1';
+    env.CLAUDE_SNEAKPEEK_UNSET_AUTH_TOKEN = '1';
   }
 
   applyModelOverrides(env, modelOverrides);

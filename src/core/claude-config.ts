@@ -80,6 +80,36 @@ export const ensureZaiMcpDeny = (configDir: string): boolean => {
   return true;
 };
 
+const ENV_RENAMES: Array<[string, string]> = [
+  ['CC_MIRROR_SPLASH', 'CLAUDE_SNEAKPEEK_SPLASH'],
+  ['CC_MIRROR_SPLASH_STYLE', 'CLAUDE_SNEAKPEEK_SPLASH_STYLE'],
+  ['CC_MIRROR_PROVIDER_LABEL', 'CLAUDE_SNEAKPEEK_PROVIDER_LABEL'],
+  ['CC_MIRROR_UNSET_AUTH_TOKEN', 'CLAUDE_SNEAKPEEK_UNSET_AUTH_TOKEN'],
+];
+
+export const migrateSettingsEnvKeys = (configDir: string): boolean => {
+  const settingsPath = path.join(configDir, SETTINGS_FILE);
+  const existing = readJson<SettingsFile>(settingsPath);
+  if (!existing?.env) return false;
+
+  const env: Record<string, string | number | undefined> = { ...existing.env };
+  let changed = false;
+
+  for (const [oldKey, newKey] of ENV_RENAMES) {
+    if (Object.hasOwn(env, oldKey)) {
+      if (!Object.hasOwn(env, newKey)) {
+        env[newKey] = env[oldKey];
+      }
+      delete env[oldKey];
+      changed = true;
+    }
+  }
+
+  if (!changed) return false;
+  writeJson(settingsPath, { ...existing, env });
+  return true;
+};
+
 export const ensureSettingsEnvDefaults = (configDir: string, defaults: Record<string, string | number>): boolean => {
   const settingsPath = path.join(configDir, SETTINGS_FILE);
   const existing = readJson<SettingsFile>(settingsPath) || {};

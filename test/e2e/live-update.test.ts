@@ -45,7 +45,7 @@ test('Live E2E: update keeps headless CLI working', { skip: !shouldRun, timeout:
 
   const wrapperPath = path.join(binDir, variantName);
   const result = spawnSync(wrapperPath, ['-p', 'hello'], {
-    env: { ...process.env, CC_MIRROR_SPLASH: '0' },
+    env: { ...process.env, CLAUDE_SNEAKPEEK_SPLASH: '0' },
     encoding: 'utf8',
   });
 

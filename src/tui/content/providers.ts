@@ -76,6 +76,31 @@ export const PROVIDER_EDUCATION: Record<string, ProviderEducation> = {
     setupNote: 'Subscribe to MiniMax Coding Plan, then get your API key from the payment page.',
   },
 
+  kimi: {
+    headline: 'Kimi K2.5 — Prism Vision',
+    tagline: 'Deep space black, refracting royal blue',
+    features: [
+      'Kimi K2.5 Multimodal model',
+      'Instant and Thinking modes support',
+      'Advanced 256K context window',
+      'Prism-themed interface',
+    ],
+    bestFor: 'Multimodal coding and complex reasoning with Moonshot AI',
+    models: {
+      sonnet: 'kimi-k2.5',
+      haiku: 'kimi-k2-turbo-preview',
+      opus: 'kimi-k2-thinking',
+    },
+    requiresMapping: false,
+    hasPromptPack: false,
+    setupLinks: {
+      subscribe: 'http://kimi.com/code',
+      apiKey: 'https://kimi.com/code/console',
+      docs: 'https://www.kimi.com/code/docs/en/more/third-party-agents.html#claude-code',
+    },
+    setupNote: 'Create Kimi (Moonshot AI) account and generate an API key from the platform console.',
+  },
+
   openrouter: {
     headline: 'OpenRouter — One API, Any Model',
     tagline: 'Many paths, one door',
@@ -143,7 +168,7 @@ export const getProviderEducation = (providerKey: string): ProviderEducation | n
  * Quick comparison points for provider selection
  */
 export const PROVIDER_COMPARISON = {
-  fullySupported: ['mirror', 'zai', 'minimax'],
+  fullySupported: ['mirror', 'zai', 'minimax', 'kimi'],
   requiresMapping: ['openrouter'],
   hasPromptPack: ['zai', 'minimax'],
   localFirst: ['ccrouter'],

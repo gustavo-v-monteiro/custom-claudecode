@@ -4,8 +4,7 @@ node_modules/
 # External repos (submodules/clones)
 repos/
 
-# Build output
-dist/
+# Build output (tracked for GitHub-based npx installs)
 
 # Environment
 .env
